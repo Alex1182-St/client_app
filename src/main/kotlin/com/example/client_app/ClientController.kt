@@ -8,27 +8,32 @@ import java.util.*
 class ClientController (val clientRepo : ClientRepository) {
 
     @PostMapping("/newClient")
-    fun createNewClient (@RequestBody newClient: ClientEntity): ClientEntity {
+    fun createNewClient(@RequestBody newClient : ClientEntity): ClientEntity {
         return clientRepo.save(newClient)
     }
+
     @GetMapping("/clients/byEmail/{clientEmail}")
-    fun getClientByEmail (@PathVariable clientEmail: String): ClientEntity {
+    fun getClientByEmail(@PathVariable clientEmail : String) : ClientEntity {
         return clientRepo.findByClientEmail(clientEmail)
     }
-        @GetMapping("/clients")
-    fun getAllClients () : List<ClientEntity> {
+
+    @GetMapping("/clients")
+    fun getAllClients() : List<ClientEntity> {
         return clientRepo.findAll()
     }
+
     @GetMapping("/clients/{id}")
-    fun getClientById (@PathVariable id : UUID): Optional<ClientEntity> {
+    fun getClientById (@PathVariable id : UUID) : Optional<ClientEntity> {
         return clientRepo.findById(id)
     }
+
     @PutMapping("/clients/{id}")
-    fun updateClient (@PathVariable id: UUID, @RequestBody updatedClient: ClientEntity): ClientEntity {
+    fun updateClient(@PathVariable id : UUID, @RequestBody updatedClient : ClientEntity) : ClientEntity {
         return clientRepo.save(updatedClient)
     }
+
     @DeleteMapping("/clients/{id}")
-    fun deleteClient(@PathVariable id: UUID) {
+    fun deleteClient(@PathVariable id : UUID) {
         return clientRepo.deleteById(id)
     }
 
