@@ -5,7 +5,7 @@ import java.util.*
 
 @RestController
 @RequestMapping("/api")
-class ClientController (val clientRepo : ClientRepository) {
+class ClientController(val clientRepo : ClientRepository) {
 
     @PostMapping("/newClient")
     fun createNewClient(@RequestBody newClient : ClientEntity): ClientEntity {
@@ -23,7 +23,7 @@ class ClientController (val clientRepo : ClientRepository) {
     }
 
     @GetMapping("/clients/{id}")
-    fun getClientById (@PathVariable id : UUID) : Optional<ClientEntity> {
+    fun getClientById(@PathVariable id : UUID) : Optional<ClientEntity> {
         return clientRepo.findById(id)
     }
 
