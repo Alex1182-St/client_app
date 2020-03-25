@@ -9,4 +9,7 @@ import java.util.*
 interface ClientRepository : JpaRepository<ClientEntity, UUID> {
 
     fun findByClientEmail(clientEmail: String) : ClientEntity
+
+
+
 }
