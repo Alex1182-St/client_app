@@ -8,8 +8,13 @@ import java.util.*
 class ClientController(val clientRepo : ClientRepository) {
 
     @PostMapping("/newClient")
-    fun createNewClient(@RequestBody newClient : ClientEntity): ClientEntity {
+    fun createNewClient(@RequestBody newClient : ClientEntity) : ClientEntity {
         return clientRepo.save(newClient)
+    }
+
+    @PostMapping("clientByMail")
+    fun clientByMailWithPost(@RequestBody clientEmail : String) : ClientEntity {
+        return clientRepo.findByClientEmail(clientEmail)
     }
 
     @GetMapping("/clients/byEmail/{clientEmail}")

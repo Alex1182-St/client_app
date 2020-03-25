@@ -8,6 +8,5 @@ import java.util.*
 @Repository
 interface ClientRepository : JpaRepository<ClientEntity, UUID> {
 
-    fun findByClientEmail (clientEmail: String) : ClientEntity
-
+    fun findByClientEmail(clientEmail: String) : ClientEntity
 }
