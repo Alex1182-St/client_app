@@ -7,7 +7,7 @@ import java.util.*
 @RequestMapping("/api")
 class ClientController(val clientRepo : ClientRepository) {
 
-    @PostMapping("/newClient")
+    @PostMapping("newClient")
     fun createNewClient(@RequestBody newClient : ClientEntity) : ClientEntity {
         return clientRepo.save(newClient)
     }
@@ -19,7 +19,9 @@ class ClientController(val clientRepo : ClientRepository) {
 
     @PostMapping("clientByMailAndCredenticals")
     fun clientByMailAndCredenticalsWithPost(@RequestBody body: Map<String, Any>) : ClientEntity {
-        return clientRepo.findByClientEmailAndClientCredenticals(body.get("clientEmail") as String, body.get("clientCredenticals") as String)
+        return clientRepo.findByClientEmailAndClientCredenticals(
+                body.get("clientEmail") as String,
+                body.get("clientCredenticals") as String)
     }
 
     @PostMapping("clientByMailOrCredenticals")
