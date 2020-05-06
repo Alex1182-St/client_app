@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("api")
 class ClientController(val clientRepo : ClientRepository) {
 
     @PostMapping("newClient")
@@ -24,44 +24,34 @@ class ClientController(val clientRepo : ClientRepository) {
                 body.get("clientCredenticals") as String)
     }
 
+/*
     @PostMapping("clientByMailOrCredenticals")
     fun clientByMailOrCredenticalsWithPost(@RequestBody body: Map<String, Any>) : ClientEntity {
         return clientRepo.findByClientEmailOrClientCredenticals(body.get("clientEmail") as String, body.get("clientCredenticals") as String)
     }
-
-    /*
-    @PostMapping("clientByMailAndOrCredenticals")
-    fun clientByMailAndOrCredenticalsWithPost(@RequestBody body: Map<String, Any>): ClientEntity {
-        val key = ""
-        when (key) {
-
-            return if
-        }
-    }
 */
 
-
-    @GetMapping("/clients/byEmail/{clientEmail}")
+    @GetMapping("clients/byEmail/{clientEmail}")
     fun getClientByEmail(@PathVariable clientEmail : String) : ClientEntity {
         return clientRepo.findByClientEmail(clientEmail)
     }
 
-    @GetMapping("/clients")
+    @GetMapping("clients")
     fun getAllClients() : List<ClientEntity> {
         return clientRepo.findAll()
     }
 
-    @GetMapping("/clients/{id}")
+    @GetMapping("clients/{id}")
     fun getClientById(@PathVariable id : UUID) : Optional<ClientEntity> {
         return clientRepo.findById(id)
     }
 
-    @PutMapping("/clients/{id}")
+    @PutMapping("clients/{id}")
     fun updateClient(@PathVariable id : UUID, @RequestBody updatedClient : ClientEntity) : ClientEntity {
         return clientRepo.save(updatedClient)
     }
 
-    @DeleteMapping("/clients/{id}")
+    @DeleteMapping("clients/{id}")
     fun deleteClient(@PathVariable id : UUID) {
         return clientRepo.deleteById(id)
     }
