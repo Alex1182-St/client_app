@@ -24,13 +24,6 @@ class ClientController(val clientRepo : ClientRepository) {
                 body.get("clientCredenticals") as String)
     }
 
-/*
-    @PostMapping("clientByMailOrCredenticals")
-    fun clientByMailOrCredenticalsWithPost(@RequestBody body: Map<String, Any>) : ClientEntity {
-        return clientRepo.findByClientEmailOrClientCredenticals(body.get("clientEmail") as String, body.get("clientCredenticals") as String)
-    }
-*/
-
     @GetMapping("clients/byEmail/{clientEmail}")
     fun getClientByEmail(@PathVariable clientEmail : String) : ClientEntity {
         return clientRepo.findByClientEmail(clientEmail)

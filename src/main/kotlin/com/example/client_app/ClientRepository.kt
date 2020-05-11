@@ -9,10 +9,10 @@ import java.util.*
 interface ClientRepository : JpaRepository<ClientEntity, UUID> {
 
     fun findByClientEmail(clientEmail : String) : ClientEntity
+
     fun findByClientCredenticals(clientCredenticals : String) : ClientEntity
 
     fun findByClientEmailAndClientCredenticals(clientEmail : String, clientCredenticals : String) : ClientEntity
 
-    fun findByClientEmailOrClientCredenticals(clientEmail : String, clientCredenticals : String) : ClientEntity
 
 }
